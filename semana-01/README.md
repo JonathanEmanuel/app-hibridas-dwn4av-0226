@@ -12,3 +12,12 @@
 ``` bash
     git add .
 ```
+4.Creamos el commit -m
+``` bash
+    git commit -m "Mensaje"
+```
+
+5.Realizamos el push
+``` bash
+    git origin main
+```
