@@ -1,23 +1,18 @@
-const nombre = 'Jonathan';
-console.log(`Hola ${nombre}`);
+const CareerManager = require('./CareerManager.js');
 
-const persona = {
-    nombre: 'José',
-    email: 'jose@dv.edu.ar',
-    edad: 26,
-    mostrarEdad(){  // this es este objeto
-        console.log(`Mi edad es ${this.edad}`);
-    }
-    /*     
-    mostrarEdad: function(){
-        console.log(`Mi edad es 26`);
-    } 
-    */
-}
 
-persona.edad = 27;
 
-console.log( persona.nombre);
-console.table( persona);
 
-persona.mostrarEdad();
+
+const manager = new CareerManager()
+//manager.addSubject({id: 1, name: 'PWA', semester: 3, hours: 2});
+//manager.addSubject({id: 2, name: 'Programación I', semester: 2, hours: 4});
+manager.addSubject({id: 5, name: 'Programación II', semester: 3, hours: 4});
+
+
+
+const materias = manager.getSubjects();
+console.table(materias);
+
+const materia = manager.getSubjecById(2);
+console.log(materia);

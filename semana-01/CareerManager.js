@@ -1,8 +1,13 @@
+const fs = require('fs');
+
 class CareerManager {
     subjects = [];
     /* { id: 1, name: 'PWA', semester: 1, hours: 2} */
     constructor(){
         this.subjects = [];
+        this.path = './data/subjects.json';
+        // Al iniciar leemos lo que esta en el JSON local
+        this.loadSubjects();
     }
     addSubject(subject){
         if( !subject.id || !subject.name || !subject.semester || !subject.hours){
@@ -10,6 +15,9 @@ class CareerManager {
             return
         }
         this.subjects.push( subject );
+        // Escribimos en el disco
+        this.saveSubjects();
+
     }
     getSubjects(){
         return this.subjects;
@@ -22,17 +30,19 @@ class CareerManager {
         }
         return subject;
     }
+    saveSubjects(){
+        const data = JSON.stringify(  this.subjects, null, 2 );
+        fs.writeFileSync(this.path, data, 'utf-8');
+    }
+    loadSubjects(){
+        // Validamos que exista el JSON
+        if( ! fs.existsSync( this.path) ){
+            this.subjects = [];
+            return;
+        }
+        const data = fs.readFileSync(this.path, 'utf-8');
+        this.subjects = JSON.parse( data );
+    }
 }
 
-const career = new CareerManager()
-career.addSubject({id: 1, name: 'PWA', semester: 3, hours: 2});
-career.addSubject({id: 2, name: 'Programación I', semester: 2, hours: 4});
-career.addSubject({id: 2, name: 'Programación II', semesterwww: 3});
-
-
-
-const materias = career.getSubjects();
-console.table(materias);
-
-const materia = career.getSubjecById(2);
-console.log(materia);
+module.exports = CareerManager;
