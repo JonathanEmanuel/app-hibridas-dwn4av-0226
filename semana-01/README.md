@@ -21,3 +21,6 @@
 ``` bash
     git origin main
 ```
+
+.gitignore
+    Donde indicamos los archivos que no queremos que se suban al repositos
