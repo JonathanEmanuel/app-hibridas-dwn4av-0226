@@ -1,74 +1,20 @@
 [
   {
-    "name": "Julieta",
-    "email": "julieta@dv.edu.ar",
-    "password": "1234",
-    "id": "096a12f0-7936-4642-b36b-84f8c3bfa660"
+    "name": "sofia",
+    "email": "sofia@dv.edu.ar",
+    "password": "$2b$10$QQUDWOmK6QuYN/w.TPpsKuXvDffCVQAhwjZs3ESUqRtGXlMkAWhma",
+    "id": "ef84ca2d-4e9d-4818-9bbb-5e27860cf71e"
   },
   {
-    "name": "Rocio",
-    "email": "rocio@dv.edu.ar",
-    "password": "1234",
-    "id": "86c46bba-a00d-41f2-8fd3-a25b2948c6d5"
+    "name": "Josefina",
+    "email": "josefina@dv.edu.ar",
+    "password": "$2b$10$43Rk2Oe9o0tfVQbdflaPbe75XSyol7ONzv2IqXm06TZHXCnmpkJoe",
+    "id": "6b821703-d711-472d-926d-910afbea75b1"
   },
   {
-    "name": "Julieta",
-    "email": "julieta@dv.edu.ar",
-    "password": "1234",
-    "id": "696f20d9-76b1-4105-ab24-b6451edbbf85"
-  },
-  {
-    "name": "Rocio",
-    "email": "rocio@dv.edu.ar",
-    "password": "1234",
-    "id": "c2fda874-7188-4848-878e-18c9255f673a"
-  },
-  {
-    "name": "Julieta",
-    "email": "julieta@dv.edu.ar",
-    "password": "1234",
-    "id": "f58d8af8-ec6d-45bd-9bd5-dfb1b167d434"
-  },
-  {
-    "name": "Rocio",
-    "email": "rocio@dv.edu.ar",
-    "password": "1234",
-    "id": "51044346-82cf-4423-ab12-557bd06e8df7"
-  },
-  {
-    "name": "Julieta",
-    "email": "julieta@dv.edu.ar",
-    "password": "1234",
-    "id": "543bd0c9-55ef-4f02-b88f-e21e7ba0064b"
-  },
-  {
-    "name": "Rocio",
-    "email": "rocio@dv.edu.ar",
-    "password": "1234",
-    "id": "e2fafa7d-3714-439a-84a1-224f4270a8e8"
-  },
-  {
-    "name": "Julieta",
-    "email": "julieta@dv.edu.ar",
-    "password": "1234",
-    "id": "d7461732-944c-4fdd-a9e2-3006184849b2"
-  },
-  {
-    "name": "Rocio",
-    "email": "rocio@dv.edu.ar",
-    "password": "1234",
-    "id": "68e901ea-e821-4e44-a906-260542903c4e"
-  },
-  {
-    "name": "Julieta",
-    "email": "julieta@dv.edu.ar",
-    "password": "1234",
-    "id": "c323a6a6-57ea-469c-95e1-1e66cfe77bcc"
-  },
-  {
-    "name": "Rocio",
-    "email": "rocio@dv.edu.ar",
-    "password": "1234",
-    "id": "a12a4920-de50-448b-ad64-2c9d35b7ed5d"
+    "name": "Lucas",
+    "email": "lucas@dv.edu.ar",
+    "password": "$2b$10$0sW3.71SzjXhQD7h4.55a.wb1vUQuJB8s7B7XyeArMd9xLxAQLjQi",
+    "id": "b398b039-e725-42e3-ad64-fb0052858299"
   }
 ]

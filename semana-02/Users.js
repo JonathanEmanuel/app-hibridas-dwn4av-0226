@@ -16,7 +16,7 @@ class Users {
         this.users.push( user );
         // Escribimos en el disco
         this.saveUsers();
-        return user;
+        return user.id;
     }
     getUsers(){
         return this.users;
@@ -50,6 +50,7 @@ class Users {
             return 'Not Found';
         }
         this.users.splice(index, 1);
+        this.saveUsers();
         return 'ok';
     }
     saveUsers(){
