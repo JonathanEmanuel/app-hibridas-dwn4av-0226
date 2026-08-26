@@ -10,6 +10,21 @@ const gestor = new Users();
 
 const app = express();
 app.use( express.urlencoded() );
+app.use(  express.static('public')  );
+
+const miMiddleware = ( req, red, next ) => {
+    console.log('Hola desde el middlware');
+    next();
+}
+
+
+const segundoMiddleware = ( req, red, next ) => {
+    console.log('Hola soy  el segundo');
+    next();
+}
+// app.use( miMiddleware);
+
+
 const port = process.env.PORT;
 let count = 0;
 app.get('/', (request, response) => {
@@ -25,7 +40,7 @@ app.get('/', (request, response) => {
                     </ul>`);
 })
 
-app.get('/subjects', (request, response) => {
+app.get('/api/subjects', miMiddleware, segundoMiddleware, (request, response) => {
     console.log('GET sobre Materias');
     response.send('<h1>Listado de materias</h1>');
 })
@@ -106,6 +121,10 @@ app.post('/api/users', async (request, response) => {
 
 console.log(chalk.blue.bgRed.bold('Hello world!'));
 
+
+/* 
+// Explicación
+
 const lecturaJSON = ( ) => {
     return new Promise( ( resolve, reject ) => {
         setTimeout(  () => {
@@ -113,9 +132,6 @@ const lecturaJSON = ( ) => {
         }, 3000 );
     } )
 }
-
-/* 
-// Explicación
 console.log('Inicio');
 
 const getUser = async () => {
