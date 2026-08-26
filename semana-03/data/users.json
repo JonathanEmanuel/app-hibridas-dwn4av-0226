@@ -1,0 +1,20 @@
+[
+  {
+    "name": "sofia",
+    "email": "sofia@dv.edu.ar",
+    "password": "$2b$10$QQUDWOmK6QuYN/w.TPpsKuXvDffCVQAhwjZs3ESUqRtGXlMkAWhma",
+    "id": "ef84ca2d-4e9d-4818-9bbb-5e27860cf71e"
+  },
+  {
+    "name": "Josefina",
+    "email": "josefina@dv.edu.ar",
+    "password": "$2b$10$43Rk2Oe9o0tfVQbdflaPbe75XSyol7ONzv2IqXm06TZHXCnmpkJoe",
+    "id": "6b821703-d711-472d-926d-910afbea75b1"
+  },
+  {
+    "name": "Lucas",
+    "email": "lucas@dv.edu.ar",
+    "password": "$2b$10$0sW3.71SzjXhQD7h4.55a.wb1vUQuJB8s7B7XyeArMd9xLxAQLjQi",
+    "id": "b398b039-e725-42e3-ad64-fb0052858299"
+  }
+]
