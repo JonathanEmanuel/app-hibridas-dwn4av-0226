@@ -16,5 +16,11 @@
     "email": "lucas@dv.edu.ar",
     "password": "$2b$10$0sW3.71SzjXhQD7h4.55a.wb1vUQuJB8s7B7XyeArMd9xLxAQLjQi",
     "id": "b398b039-e725-42e3-ad64-fb0052858299"
+  },
+  {
+    "name": "Carlos",
+    "email": "carlos@dv.edu.ar",
+    "password": "$2b$10$tyh/hhb5h3kk3/oubswFbOZ7j2/w.MfI2jeGiRa1UFwrlmEYv4g7C",
+    "id": "6d79e93c-f386-42f5-b223-cd9ced5d6abc"
   }
 ]
