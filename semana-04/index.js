@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import chalk from 'chalk';
-import mongoose from 'mongoose'
+import { connectDB } from './config/db.js';
 import routerAPI from './routes/index.js';
 
 dotenv.config();
@@ -12,17 +12,13 @@ app.use( express.json());
 app.use(  express.static('public')  );
 
 const port = process.env.PORT;
-const MONGODB_URI = process.env.MONGODB_URI;
-
-mongoose.connect( MONGODB_URI  );
+connectDB();
 
 
-let count = 0;
 app.get('/', (request, response) => {
     count++;
-    console.log(`Cliente conectado N: ${count}`);
+    console.log(`Cliente conectado`);
     response.send(`<h1>Hola desde Express.js👋</h1> 
-                    <p style='color: teal'>Sos el cliente número ${count} </p>
                     <ul>
                         <li><a href='/subjects'> Listado de materias </a> </li>
                         <li><a href='api/users'> Listado de usuarios </a> </li>
