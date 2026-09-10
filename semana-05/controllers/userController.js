@@ -5,7 +5,7 @@ import Users from "../models/userModel.js";
 
 
 const getUsers = async (req, res) => {
-    const data = await Users.find();
+    const data = await Users.find().select('name email');
     res.json( {message: 'success', data: data });
 };
 const getUserById = async (req, res) => {

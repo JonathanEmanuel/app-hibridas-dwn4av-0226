@@ -1,4 +1,5 @@
 import Subject from "../models/Subjects.js";
+import Career from "../models/Career.js";
 
 class SubjectController {
     async getAll( req, res) {
@@ -42,10 +43,20 @@ class SubjectController {
     }
     async create(req, res) {
           try {
+
             const { name, semester, hours, career } = req.body;
             if( !name || !semester || !hours){
                 return res.status(403).send('Faltan Parametros Obligatorios');
             }
+            // Validamos que la carrera exista
+            const careerExists = await Career.findById( career );
+
+            if( !careerExists){
+                return res.status(404).json({
+                    message: 'La carrera no existe'
+                });
+            }
+
             const subject = await Subject.create({ 
                 name, 
                 semester, 
