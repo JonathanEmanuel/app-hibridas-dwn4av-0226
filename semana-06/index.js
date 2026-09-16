@@ -15,12 +15,6 @@ const port = process.env.PORT;
 connectDB();
 
 
-app.get('/', (request, response) => {
-    count++;
-    console.log(`Cliente conectado`);
-    response.send(`<h1>Hola desde Express.js👋</h1>`);
-})
-
 routerAPI(app);
 
 app.listen( port, () => {
