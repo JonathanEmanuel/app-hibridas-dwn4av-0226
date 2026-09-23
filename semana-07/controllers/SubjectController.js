@@ -5,7 +5,7 @@ class SubjectController {
     async getAll( req, res) {
         try {
             const subjects = await Subject.find().populate('career');
-
+            console.log( req.user)
             res.json({
                 message:'success',
                 data: subjects

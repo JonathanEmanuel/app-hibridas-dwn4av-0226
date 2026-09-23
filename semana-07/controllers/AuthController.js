@@ -10,7 +10,7 @@ const SECRET_KEY = process.env.SECRET_KEY;
 class AuthController {
     async register( req, res) {
         try {
-            const { name, email, password} = req.body;
+            const { name, email, password } = req.body;
 
             if( !name || !email || !password){
                 return res.status(403).send('Faltan Parametros Obligatorios');
@@ -26,7 +26,6 @@ class AuthController {
             } 
 
             const hashedPassword = await bcrypt.hash( password, 10 );
-
             const newUser = await User.create({
                 name,
                 email,
@@ -34,7 +33,7 @@ class AuthController {
             })
             
             const data = {
-                _id: newUser._id,
+                id: newUser._id,
                 email: newUser.email
             }
 
@@ -52,7 +51,7 @@ class AuthController {
         }
     }
     async login( req, res) {
-                try {
+        try {
             const { email, password } = req.body;
 
             if( !email || !password){
@@ -75,21 +74,22 @@ class AuthController {
                 })
             }
 
-  
-
             const payload = {
-                _id: user._id,
+                id: user._id,
                 name: user.name
             }
 
             // Luego generamos el Token
-            const token = jwt.sign( payload, SECRET_KEY, { expiresIn: '1h'});
+            const token = jwt.sign( 
+                payload, 
+                SECRET_KEY, 
+                { expiresIn: '1h'}
+            );
 
-          res.json({
-                    message: 'Credenciales Correctas!',
-                    token
+            res.json({
+                message: 'Credenciales Correctas!',
+                token
             })
-
 
         } catch (error) {
             console.log( error);
