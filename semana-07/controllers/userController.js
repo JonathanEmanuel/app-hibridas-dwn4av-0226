@@ -76,7 +76,7 @@ class UserController {
             const { uid } = req.params;
             const { body } = req;
             const { name, email, password, role} = body;
-
+            console.log({body});
             if( !name || !email || !password){
                 return res.status(403).send('Faltan Parametros Obligatorios');
             }
@@ -93,7 +93,7 @@ class UserController {
             if( role){
                 data.role = role;
             }
-
+            console.log(data)
             const user = await Users.findByIdAndUpdate(uid, data );
             user.save()
             res.status(200).json( {message: 'success', data: {} });

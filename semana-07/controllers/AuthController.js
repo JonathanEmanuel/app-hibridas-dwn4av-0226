@@ -73,10 +73,11 @@ class AuthController {
                     message: 'Credenciales Invalidas'
                 })
             }
-
+            // Agregamos el role en los datos visibles
             const payload = {
                 id: user._id,
-                name: user.name
+                name: user.name,
+                role: user.role
             }
 
             // Luego generamos el Token
