@@ -15,13 +15,10 @@ const authMiddleware = ( req, res, next )=> {
     }
 
     const token = authHeader.split(' ')[1];
-    // console.log({token});
 
     try {
         const decoded = jwt.verify(token, SECRET_KEY);
-
-        console.log({decoded});
-
+        // console.log({decoded});
         req.user = decoded;
 
     } catch (error) {
@@ -30,7 +27,7 @@ const authMiddleware = ( req, res, next )=> {
         })
     }
 
-    next()
+    next();
 }
 
 export default authMiddleware
