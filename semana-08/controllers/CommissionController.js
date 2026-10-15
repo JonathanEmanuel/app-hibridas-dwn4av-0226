@@ -1,4 +1,5 @@
 import Commission from "../models/Commission.js";
+import mongoose from 'mongoose';
 /*
     GET /
     GET /:id
@@ -58,8 +59,55 @@ class CommissionController {
     async create(req, res){
         try {
             // Validar los campos ingresado... Proximamente
-            const data = req.body;
-            const commission = await Commission.create(data);
+            const { name, subject, teacher, modality, active }  = req.body;
+            // 1° Campos obligatorios
+            if( !name || !subject) {
+                return res.status(400).json({
+                    message: 'Los campos name y subject son oblogatorios'
+                })
+            }
+            // 2° Validamos nombre
+            if(  typeof name != 'string' || !name.trim() ){
+                return res.status(400).json({
+                    message: 'Los campos name debe ser un texto válido'
+                })
+            }
+            // 3° validamos formato
+            if( ! mongoose.isValidObjectId( subject) ){
+                return res.status(400).json({
+                    message: 'El identificador de materia no es válido'
+                })
+            }
+
+
+            if( ! mongoose.isValidObjectId( teacher)  && teacher !== '' && teacher != null && teacher != undefined  ){
+                return res.status(400).json({
+                    message: 'El identificador del profesor no es válido'
+                })
+            }
+
+            const modalidadesValidas = ['presencial', 'virtual'];
+
+            if( modality !== undefined   && !modalidadesValidas.includes( modality)) {
+                return res.status(400).json({
+                    message: 'La modalidad debe ser presencial o virtual'
+                })
+            }
+
+            if( active !== undefined  && typeof active != 'boolean'){
+                return res.status(400).json({
+                    message: 'El campo acive debe ser un boolean'
+                })
+            }
+
+
+            const commission = await Commission.create({
+                name: name.trim(),
+                subject,
+                teacher,
+                modality,
+                active
+            });
 
             res.status(201).json({
                 message: 'success',
