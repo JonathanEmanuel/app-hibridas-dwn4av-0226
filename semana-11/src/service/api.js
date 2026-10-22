@@ -10,9 +10,6 @@ export async function obtenerCarreras(){
     return response.json();
 }
 
-
-
-
 export async function iniciarSesion(email, password){
     const response = await fetch( `${API_URL}/api/auth/login`,
                 {
@@ -29,5 +26,22 @@ export async function iniciarSesion(email, password){
         throw new Error("No se pudo iniciar Sesión");
     }
 
+    return data;
+}
+
+export async function registrarUsuario(name, email, password){
+    const response = await fetch(`${API_URL}/api/auth/register`,  {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, password})
+                });
+    const data = await response.json()
+
+    if( !response.ok){
+        throw new Error("No se pudo realizar el registro");
+
+    }
     return data;
 }
