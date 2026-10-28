@@ -11,7 +11,7 @@ function Login(){
     const [ password, setPassword ] = useState('');
     const [ cargando, setCargando ] = useState(false);
 
-    const { loginUser } = useAuth();
+    const { login } = useAuth();
     const navigate = useNavigate();
 
 
@@ -23,7 +23,7 @@ function Login(){
         try {
             console.log({email, password})
             // Guardamos el token en un contexto
-            await loginUser(email, password);
+            await login(email, password);
            // navigate('/');
  
             

@@ -49,10 +49,8 @@ export function AuthProvider({ children }){
     // sesion = { token: null, user: null }
     const [ sesion, setSesion] = useState(restaurarSesion);
 
-    async function loginUser(){
-        console.log('Login!')
+    async function login( email, password){
         const data = await iniciarSesion(email, password);
-        console.log('fin del servicio')
         if( !data.token){
             throw new Error('No se recibio de la API el token');
         }
@@ -77,7 +75,7 @@ export function AuthProvider({ children }){
                 token: sesion.token,
                 user: sesion.user,
                 autenticado:  Boolean(sesion.token && sesion.user),
-                loginUser,
+                login,
                 logout 
                 } }>
             {children }
