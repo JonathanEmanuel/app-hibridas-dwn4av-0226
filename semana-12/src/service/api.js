@@ -11,6 +11,7 @@ export async function obtenerCarreras(){
 }
 
 export async function iniciarSesion(email, password){
+    console.log('INicio del servicio', API_URL)
     const response = await fetch(`${API_URL}/api/auth/login`,
                 {
                     method: 'POST',
@@ -20,8 +21,9 @@ export async function iniciarSesion(email, password){
                     body: JSON.stringify({ email, password })
                 }
             );
-    const data = await response.json();
-
+    const data = await response.json().catch( err => { 
+        console.log(err)})
+    console.log( {data});
     if( !response.ok){
         throw new Error("No se pudo iniciar Sesión");
     }

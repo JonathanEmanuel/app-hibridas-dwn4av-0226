@@ -1,6 +1,6 @@
 import { createContext, useState,  useContext } from 'react'
 import { jwtDecode } from 'jwt-decode'
-import { iniciarSesion } from '../service/api'
+import { iniciarSesion } from '../service/api.js'
 
 const AuthContext = createContext(null);
 
@@ -49,9 +49,10 @@ export function AuthProvider({ children }){
     // sesion = { token: null, user: null }
     const [ sesion, setSesion] = useState(restaurarSesion);
 
-    async function login(){
+    async function loginUser(){
+        console.log('Login!')
         const data = await iniciarSesion(email, password);
-        
+        console.log('fin del servicio')
         if( !data.token){
             throw new Error('No se recibio de la API el token');
         }
@@ -75,8 +76,8 @@ export function AuthProvider({ children }){
         <AuthContext.Provider value={ { 
                 token: sesion.token,
                 user: sesion.user,
-                autenticado: (sesion.token && sesion.user),
-                login,
+                autenticado:  Boolean(sesion.token && sesion.user),
+                loginUser,
                 logout 
                 } }>
             {children }
@@ -85,5 +86,5 @@ export function AuthProvider({ children }){
 }
 
 export function useAuth(){
-    return useContext( AuthContext)
+    return useContext( AuthContext );
 }

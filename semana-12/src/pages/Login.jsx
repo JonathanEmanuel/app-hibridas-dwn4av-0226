@@ -1,26 +1,34 @@
-import { useState, useEffect } from 'react'
-import { iniciarSesion } from '../service/api.js'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext.jsx';
 
 function Login(){
     const [ error, setError] = useState('');
 
     // Estados para el formulario
-    const [ mensaje, setMensaje ] = useState('Soy un mensaje');
+    const [ mensaje, setMensaje ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
-    const [ token, setToken ] = useState('');
     const [ cargando, setCargando ] = useState(false);
+
+    const { loginUser } = useAuth();
+    const navigate = useNavigate();
+
 
     async function handleSubmitLogin(event){
         event.preventDefault();
-        setCargando( true);
+        setCargando( true );
         setMensaje('');
 
         try {
-            const result = await iniciarSesion( email, password);
-            setMensaje( result);
-            // Guardamos el token en un estado o contexto
+            console.log({email, password})
+            // Guardamos el token en un contexto
+            await loginUser(email, password);
+           // navigate('/');
+ 
+            
         } catch (error) {
+            console.error({ error})
             setMensaje( error.message);
             console.error( error.message);
         } finally {
