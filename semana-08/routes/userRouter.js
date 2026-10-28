@@ -10,7 +10,7 @@ const controller = new UserController();
 router.get('/',   authMiddleware,   roleMiddleware,   controller.getAll)
 router.get('/:uid',  authMiddleware, roleMiddleware,  controller.getById)
 router.put('/:uid',  authMiddleware, roleMiddleware,  controller.update)
-router.post('/',     authMiddleware, authMiddleware,  controller.create)
+router.post('/',     authMiddleware, roleMiddleware,  controller.create)
 router.delete('/:uid', authMiddleware, roleMiddleware, controller.delete)
 
 router.post('/profileimage', authMiddleware,  upload.single('profileImage'), controller.uploadProfileImage  );
