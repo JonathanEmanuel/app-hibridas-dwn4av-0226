@@ -21,36 +21,15 @@ export async function iniciarSesion(email, password){
                 }
             );
     const data = await response.json().catch( err => { 
-        console.log(err)})
-    console.log( {data});
+        console.log(err)
+    })
+    // console.log( {data});
     if( !response.ok){
         throw new Error("No se pudo iniciar Sesión");
     }
 
     return data;
 }
-/*
-export async function iniciarSesion(email, password) {
-  console.log('Inicio del servicio', API_URL);
-  
-  const response = await fetch(`${API_URL}/api/auth/login`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    // Envía estrictamente un objeto plano con los valores en texto
-    body: JSON.stringify({ email, password }) 
-  });
-
-  const data = await response.json();
-  
-  if (!response.ok) {
-    throw new Error("No se pudo iniciar Sesión");
-  }
-
-  return data;
-}
-*/
 
 export async function registrarUsuario(name, email, password){
     const response = await fetch(`${API_URL}/api/auth/register`,  {
