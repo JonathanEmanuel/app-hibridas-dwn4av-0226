@@ -35,6 +35,11 @@ function App() {
           <Route element={ <RoleRoute rolesPermitidos={ ['admin']} />}>
             <Route path='/admin' element={ <Admin />} />
           </Route>
+          
+          <Route element={ <RoleRoute rolesPermitidos={ ['teacher']} /> }>
+            <Route path='teacher' element={ <Docente /> } />
+          </Route>
+
 
         </Route>
         <Route path='/acceso-denegado' element={< AccesoDenegado />} />

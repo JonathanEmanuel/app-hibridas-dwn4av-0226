@@ -14,7 +14,7 @@ function Login(){
     const { login } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    const destino =  location.state?.from?.pathName || '/perfil';
+    const destino =  location.state?.from?.pathname || '/perfil';
 
     async function handleSubmitLogin(event){
         event.preventDefault();

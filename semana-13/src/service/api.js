@@ -78,5 +78,4 @@ export async function fetchPrivado( endpoint, options={} ){
     }
 
     return data;
-
 }
