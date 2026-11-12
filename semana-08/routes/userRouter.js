@@ -8,6 +8,8 @@ const router = express.Router();
 const controller = new UserController();
 //                autenticado   && Autorizado
 router.get('/',   authMiddleware,   roleMiddleware,   controller.getAll)
+router.get('/me', authMiddleware, controller.getMe);
+
 router.get('/:uid',  authMiddleware, roleMiddleware,  controller.getById)
 router.put('/:uid',  authMiddleware, roleMiddleware,  controller.update)
 router.post('/',     authMiddleware, roleMiddleware,  controller.create)

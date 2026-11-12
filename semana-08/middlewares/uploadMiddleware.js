@@ -1,10 +1,9 @@
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
-
+// Directorio de trabajo
 const uploadDirectory = 'uploads/profiles';
-
-
+// Si no existe el directorio lo creamos
 if( !fs.existsSync( uploadDirectory)){
     fs.mkdirSync( uploadDirectory, { recursive: true});
 }
@@ -14,9 +13,11 @@ const storage = multer.diskStorage({
         cb(null, uploadDirectory)
     },
     filename: ( req, file, cb) => {
+
+
         const extension = path.extname( file.originalname );
         const { user } = req;
-        const fileName =  `user-${user.id}${extension}`;     
+        const fileName =  `${user.id}${extension}`;     
         cb(null, fileName)
     }
 });

@@ -124,21 +124,30 @@ class UserController {
 
     async uploadProfileImage( req, res) {
         try {
+            // Verificamos si no se paso una archivo
             if( !req.file){
                 return res.status(400).json({
                     message: `No se envio el archivo`
                 })
             }
-
+            // Construimos la ruta pública
             const imagePath = `/uploads/profiles/${req.file.filename}`;
+            // Identificamos al usuario por su id que obtenemos del JWT
             const uid = req.user.id;
+            // Actualizamos el usuario con la ruta de la imagen
             const user = await Users.findByIdAndUpdate(
                 uid, 
                 {profileImage: imagePath}, 
                 { new: true}
             ).select('_id name email profileImage');
+            // Si no se actualizo el usuario porque no se encotro
+            if(!user){
+                return res.status(404).json({
+                    message: 'Usuario no econtrado'
+                })
+            }
 
-            res.status(200).json({
+            return res.status(200).json({
                 message: 'Imagen actualizada', 
                 data: user 
             });
@@ -147,6 +156,30 @@ class UserController {
             console.error(error);
             res.status(500).json({
                 message: `Error del servidor, al actualizar la foto del usuario`
+            })
+        }
+    }
+
+    async getMe(req, res) {
+        try {
+            const uid = req.user.id;
+            const user = await Users.findById(uid).select('-password');
+
+            if( !user){
+                return res.status(404).json({
+                    message: 'Usuario no encontrado'
+                });
+            }
+
+            res.status(200).json({
+                message: 'success',
+                data: user
+            })
+
+        } catch (error) {
+            console.error( error);
+            res.status(500).json({
+                message: "Error al obentener el Perfil"
             })
         }
     }
